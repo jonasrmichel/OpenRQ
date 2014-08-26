@@ -800,7 +800,7 @@ final class LinearSystem {
              */
 
             // stack of non-zeros in the chosen row
-            Deque<Integer> nonZerosStack = new ArrayDeque<>(chosenRow.nonZeros);
+            Deque<Integer> nonZerosStack = new ArrayDeque<Integer>(chosenRow.nonZeros);
 
             // search the chosen row for the positions of the non-zeros
             for (int nZ = 0, col = i; nZ < chosenRow.nonZeros; col++) // TODO the positions of the non-zeros could

@@ -32,7 +32,7 @@ public class ImmutableList<E> extends AbstractList<E> implements RandomAccess {
     @SafeVarargs
     public static <T> ImmutableList<T> of(T... elements) {
 
-        return new ImmutableList<>(elements);
+        return new ImmutableList<T>(elements);
     }
 
     /**
@@ -52,7 +52,7 @@ public class ImmutableList<E> extends AbstractList<E> implements RandomAccess {
         for (T el : elements) {
             Objects.requireNonNull(el);
         }
-        return new ImmutableList<>(elements);
+        return new ImmutableList<T>(elements);
     }
 
     /**
@@ -68,7 +68,7 @@ public class ImmutableList<E> extends AbstractList<E> implements RandomAccess {
     @SafeVarargs
     public static <T> ImmutableList<T> copyOf(T... elements) {
 
-        return new ImmutableList<>(Arrays.copyOf(elements, elements.length));
+        return new ImmutableList<T>(Arrays.copyOf(elements, elements.length));
     }
 
     /**
@@ -89,7 +89,7 @@ public class ImmutableList<E> extends AbstractList<E> implements RandomAccess {
         for (T el : copy) {
             Objects.requireNonNull(el);
         }
-        return new ImmutableList<>(copy);
+        return new ImmutableList<T>(copy);
     }
 
     /**
@@ -121,7 +121,7 @@ public class ImmutableList<E> extends AbstractList<E> implements RandomAccess {
             throw new ConcurrentModificationException();
         }
 
-        return new ImmutableList<>(elements);
+        return new ImmutableList<T>(elements);
     }
 
     /**
@@ -158,7 +158,7 @@ public class ImmutableList<E> extends AbstractList<E> implements RandomAccess {
             throw new ConcurrentModificationException();
         }
 
-        return new ImmutableList<>(elements);
+        return new ImmutableList<T>(elements);
     }
 
 

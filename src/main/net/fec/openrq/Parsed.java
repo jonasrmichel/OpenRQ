@@ -38,7 +38,7 @@ public abstract class Parsed<V> {
      */
     public static <T> Parsed<T> of(T value) {
 
-        return new ParsedValue<>(value);
+        return new ParsedValue<T>(value);
     }
 
     /**
@@ -52,7 +52,7 @@ public abstract class Parsed<V> {
      */
     public static <T> Parsed<T> invalid(String failureReason) {
 
-        return new InvalidValue<>(failureReason);
+        return new InvalidValue<T>(failureReason);
     }
 
     /**

@@ -22,10 +22,10 @@ final class InternalConstants {
 
     static final int Al = 1;
 
-    static final int K_max = 56_403;                 // "maximum number of symbols in each source block"
+    static final int K_max = 56403;                 // "maximum number of symbols in each source block"
     static final int Z_max = 256;                    // "maximum number of source blocks"
     static final int Kt_max = K_max * Z_max;         // "maximum number of symbols"
-    static final int T_max = (65_535 / Al) * Al;     // "maximum symbol size, in octets"
+    static final int T_max = (65535 / Al) * Al;     // "maximum symbol size, in octets"
     static final long F_max = (long)Kt_max * T_max;  // "maximum transfer length of the object, in octets"
     static final int N_max = 1/* K_max */;           // "maximum interleaver length, in number of sub-blocks"
     // TODO enable interleaving
@@ -38,7 +38,7 @@ final class InternalConstants {
     static final int N_min = 1;
 
     static final int SBN_max = 255;
-    static final int ESI_max = 16_777_215;
+    static final int ESI_max = 16777215;
 
     static final int SBN_min = 0;
     static final int ESI_min = 0;
@@ -46,5 +46,5 @@ final class InternalConstants {
     static final int F_num_bytes = 5;
     static final int ESI_num_bytes = 3;
 
-    static final long common_OTI_reserved_inverse_mask = 0xFF_FF_FF_FF_FF_00_FF_FFL; // third octet is reserved bits
+    static final long common_OTI_reserved_inverse_mask = 0xFFFFFFFFFF00FFFFL; // third octet is reserved bits
 }

@@ -38,7 +38,7 @@ import net.fec.openrq.util.rq.SystematicIndices;
 
 /**
  */
-final class ArraySourceBlockDecoder implements SourceBlockDecoder {
+public final class ArraySourceBlockDecoder implements SourceBlockDecoder {
 
     // requires valid arguments
     static ArraySourceBlockDecoder newDecoder(
@@ -273,7 +273,7 @@ final class ArraySourceBlockDecoder implements SourceBlockDecoder {
             final int numMissing = symbolsState.numMissingSourceSymbols();
 
             // linked hash set preserves insertion ordering (while not being sorted)
-            final Set<Integer> missingSourceSymbols = new LinkedHashSet<>(numMissing);
+            final Set<Integer> missingSourceSymbols = new LinkedHashSet<Integer>(numMissing);
             for (Integer esi : symbolsState.missingSourceSymbols()) {
                 missingSourceSymbols.add(esi);
             }
@@ -292,7 +292,7 @@ final class ArraySourceBlockDecoder implements SourceBlockDecoder {
         }
         else {
             // linked hash set preserves insertion ordering (while not being sorted)
-            return new LinkedHashSet<>(symbolsState.repairSymbolsESIs());
+            return new LinkedHashSet<Integer>(symbolsState.repairSymbolsESIs());
         }
     }
 
@@ -519,7 +519,7 @@ final class ArraySourceBlockDecoder implements SourceBlockDecoder {
 
             this.sourceSymbolsBitSet = new BitSet(K);
 
-            this.repairSymbols = new LinkedHashMap<>(); // preserved receiving ordering
+            this.repairSymbols = new LinkedHashMap<Integer, EncodingSymbol>(); // preserved receiving ordering
             this.missingSourceSymbols = new MissingSourceSymbolsIterable(sourceSymbolsBitSet, K);
             this.receivedSourceSymbols = new ReceivedSourceSymbolsIterable(sourceSymbolsBitSet);
 
@@ -661,7 +661,7 @@ final class ArraySourceBlockDecoder implements SourceBlockDecoder {
 
     // ============================= TEST_CODE ============================= //
 
-    static SourceBlockState forceDecode(ArraySourceBlockDecoder decoder) {
+    public static SourceBlockState forceDecode(ArraySourceBlockDecoder decoder) {
 
         decoder.symbolsState.lock();
         try {

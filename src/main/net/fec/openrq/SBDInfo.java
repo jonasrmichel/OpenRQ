@@ -736,8 +736,8 @@ public final class SBDInfo {
         final byte decoded = 2;
         final byte decodingFailure = 3;
 
-        STATE_BYTE_VALUES = new EnumMap<>(SourceBlockState.class);
-        BYTE_STATE_VALUES = new HashMap<>(4, 1.0f);
+        STATE_BYTE_VALUES = new EnumMap<SourceBlockState, Byte>(SourceBlockState.class);
+        BYTE_STATE_VALUES = new HashMap<Byte, SourceBlockState>(4, 1.0f);
 
         STATE_BYTE_VALUES.put(SourceBlockState.INCOMPLETE, incomplete);
         BYTE_STATE_VALUES.put(incomplete, SourceBlockState.INCOMPLETE);
@@ -921,7 +921,7 @@ public final class SBDInfo {
                 (numMiss * SizeOf.SHORT), rem));
         }
 
-        final Set<Integer> missing = new LinkedHashSet<>(numMiss);
+        final Set<Integer> missing = new LinkedHashSet<Integer>(numMiss);
         for (int n = 0; n < numMiss; n++) {
             final int esi = UnsignedTypes.readUnsignedShort(buf);
             addMissingSourceSymbolESI(esi, missing, K);
@@ -935,7 +935,7 @@ public final class SBDInfo {
         throws IOException, InternalParsingException
     {
 
-        final Set<Integer> missing = new LinkedHashSet<>(numMiss);
+        final Set<Integer> missing = new LinkedHashSet<Integer>(numMiss);
         for (int n = 0; n < numMiss; n++) {
             final int esi = UnsignedTypes.getUnsignedShort(in.readShort());
             addMissingSourceSymbolESI(esi, missing, K);
@@ -1030,7 +1030,7 @@ public final class SBDInfo {
                 (numAvail * SizeOf.UNSIGNED_3_BYTES), rem));
         }
 
-        final Set<Integer> available = new LinkedHashSet<>(numAvail);
+        final Set<Integer> available = new LinkedHashSet<Integer>(numAvail);
         for (int n = 0; n < numAvail; n++) {
             final int esi = UnsignedTypes.readUnsignedBytes(buf, SizeOf.UNSIGNED_3_BYTES);
             addAvailableRepairSymbolESI(esi, available, K);
@@ -1046,7 +1046,7 @@ public final class SBDInfo {
 
         final byte[] _3byteArray = new byte[SizeOf.UNSIGNED_3_BYTES];
 
-        final Set<Integer> available = new LinkedHashSet<>(numAvail);
+        final Set<Integer> available = new LinkedHashSet<Integer>(numAvail);
         for (int n = 0; n < numAvail; n++) {
             in.readFully(_3byteArray);
             final int esi = UnsignedTypes.getUnsignedBytes(_3byteArray, SizeOf.UNSIGNED_3_BYTES);
